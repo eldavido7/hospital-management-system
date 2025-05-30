@@ -291,3 +291,10 @@ This captures the general flow of a patient visit, including all possible branch
    ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Login using:
+   ```bash
+   username: admin
+   password: any
+   ```
+   check lib/data/staff.ts to see all usernames and login with specific ones if you want to see their views. 
+   
