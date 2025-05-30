@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-in {
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.animate-out {
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.slide-in-from-top-full {
+  animation-name: slideInFromTop;
+}
+
+.slide-in-from-bottom-full {
+  animation-name: slideInFromBottom;
+}
+
+.slide-out-to-right-full {
+  animation-name: slideOutToRight;
+}
+
+.fade-out-80 {
+  animation-name: fadeOut;
+}
+
+/* Dark mode fixes for popups, search results and hover states */
+.dark {
+  /* Fix for white and colored popups and panels */
+  .bg-white,
+  [class*="bg-white"],
+  .hover\:bg-white:hover,
+  .bg-blue-50,
+  [class*="bg-blue-50"],
+  .hover\:bg-blue-50:hover,
+  .bg-green-50,
+  [class*="bg-green-50"],
+  .hover\:bg-green-50:hover {
+    @apply bg-gray-800 text-gray-100;
+  }
+
+  /* Fix for search results and dropdown items */
+  .search-result-item,
+  .dropdown-item,
+  .popup-panel,
+  .command-item {
+    @apply bg-gray-800 text-gray-100 border-gray-700;
+  }
+
+  /* Fix hover states */
+  .hover\:bg-gray-100:hover {
+    @apply bg-gray-700 text-gray-100;
+  }
+
+  /* Fix for white panels and cards */
+  .card,
+  .panel,
+  .white-panel {
+    @apply bg-gray-800 text-gray-100 border-gray-700;
+  }
+
+  /* Fix for table rows and cells */
+  tr,
+  td,
+  th {
+    @apply border-gray-700;
+  }
+
+  tr:hover {
+    @apply bg-gray-700;
+  }
+
+  /* Fix for inputs and form elements */
+  input,
+  select,
+  textarea {
+    @apply bg-gray-800 text-gray-100 border-gray-700;
+  }
+
+  /* Fix for buttons */
+  button.bg-white,
+  button.hover\:bg-white:hover {
+    @apply bg-gray-700 text-gray-100 hover:bg-gray-600;
+  }
+
+  /* Fix for radio buttons and checkboxes */
+  input[type="radio"],
+  input[type="checkbox"] {
+    @apply border-gray-600;
+  }
+
+  /* Fix for calendar and date picker */
+  .calendar-month button {
+    @apply text-gray-300 hover:bg-gray-700;
+  }
+
+  .calendar-month button:disabled {
+    @apply text-gray-600;
+  }
+}
